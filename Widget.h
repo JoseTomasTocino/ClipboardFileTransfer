@@ -17,50 +17,49 @@
 #include <QTimer>
 #include <QWidget>
 
+#include "Receiver.h"
+#include "Sender.h"
 #include "State.h"
 
 class QClipboard;
 
-namespace Ui {
+namespace Ui
+{
 class Widget;
 }
 
-class Widget : public QWidget {
+class Widget : public QWidget
+{
     Q_OBJECT
 
 public:
-    explicit Widget(QWidget* parent = nullptr);
+    explicit Widget(QWidget * parent = nullptr);
     ~Widget();
 
+public slots:
+    void updateProgress(quint16 current, quint16 total);
+
 private slots:
-    void clipboardDataChanged();
-
     void on_btnSend_clicked();
-
     void on_btnReceive_clicked();
+
+    void enableButtons();
+    void disableButtons();
 
 private:
     void handleState();
     void sendCurrentChunk();
 
-    Ui::Widget* ui;
+    Ui::Widget * ui;
 
     State mState = State::Initial;
-    QClipboard* mClipboard = nullptr;
+    QClipboard * mClipboard = nullptr;
 
-    QTimer mReceiverHeartbeat;
-
-    QFile mTheFile;
-
-    QString mReceivedFileName;
-    QString mReceivedFileFullPath;
-    quint64 mReceivedFileSize;
-
-    quint64 mBytesTotal = 0;
-    quint64 mBytesSent = 0;
-
-    quint8 mCurrentChunk;
     QList<QByteArray> mReceivedChunks;
+
+    Mode mMode = Mode::None;
+    QSharedPointer<Receiver> mReceiver;
+    QSharedPointer<Sender> mSender;
 };
 
 #endif // WIDGET_H

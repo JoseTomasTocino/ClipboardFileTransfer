@@ -1,0 +1,22 @@
+---
+BasedOnStyle: WebKit
+AccessModifierOffset: '-4'
+AlignAfterOpenBracket: Align
+AlignOperands: 'true'
+AlignTrailingComments: 'true'
+AllowShortBlocksOnASingleLine: 'false'
+AllowShortFunctionsOnASingleLine: None
+AllowShortIfStatementsOnASingleLine: 'false'
+AllowShortLoopsOnASingleLine: 'false'
+AlwaysBreakTemplateDeclarations: 'true'
+BreakBeforeBraces: Allman
+CommentPragmas: '^!|^:'
+DerivePointerAlignment: 'false'
+Language: Cpp
+PointerAlignment: Middle
+Standard: Cpp11
+TabWidth: '4'
+UseTab: Never
+ColumnLimit: 120
+
+...

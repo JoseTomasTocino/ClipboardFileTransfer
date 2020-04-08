@@ -23,10 +23,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        Receiver.cpp \
+        Sender.cpp \
+        State.cpp \
         main.cpp \
         Widget.cpp
 
 HEADERS += \
+    Receiver.h \
+    Sender.h \
         Widget.h \
     State.h
 
@@ -37,3 +42,6 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    .clang-format

@@ -13,7 +13,11 @@
 #ifndef STATE_H
 #define STATE_H
 
-enum class State {
+#include <QMap>
+#include <QString>
+
+enum class State
+{
     Initial,
     WaitingForReceiver,
     WaitingForSendAccept,
@@ -24,5 +28,14 @@ enum class State {
     FinishedSending,
     FinishedReceiving
 };
+
+enum class Mode
+{
+    None,
+    Sending,
+    Receiving
+};
+
+QString stateToString(State state);
 
 #endif // STATE_H
